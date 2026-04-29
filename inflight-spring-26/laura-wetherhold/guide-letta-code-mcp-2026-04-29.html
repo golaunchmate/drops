@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letta Code MCP Integration Guide</title>
+    <style>
+        body { font-family: 'Inter', -apple-system, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; background: #f8fafc; }
+        .header { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; padding: 2rem; border-radius: 16px; margin-bottom: 2rem; }
+        h1 { margin: 0 0 0.5rem 0; font-size: 2rem; }
+        .subtitle { opacity: 0.9; font-size: 1.1rem; }
+        .card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1.5rem; }
+        .step { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+        .step-number { background: #6366f1; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+        .step-content { flex: 1; }
+        h3 { margin: 0 0 0.5rem 0; color: #1e293b; }
+        code { background: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+        pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+        .tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; margin-right: 0.5rem; background: #dbeafe; color: #1e40af; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 Letta Code MCP Integration</h1>
+        <div class="subtitle">A Step-by-Step Guide for LaunchMate</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">GUIDE</span>
+        <h2>Overview</h2>
+        <p>This guide walks you through integrating Letta Code (desktop) with LaunchMate's context engine via Model Context Protocol (MCP). By the end, you'll have a local agent that can ingest transcripts, create drops, and sync with your cloud LaunchMate agent.</p>
+    </div>
+
+    <div class="card">
+        <h2>Installation Steps</h2>
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3>Install Letta Code</h3>
+                <p>Download Letta Code desktop app from <a href="https://letta.com">letta.com</a>. This gives you local agent execution with file system access.</p>
+                <pre><code># Verify installation
+letta --version</code></pre>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3>Configure MCP Server</h3>
+                <p>Set up the MCP (Model Context Protocol) server to connect Letta Code to external services like Granola, GitHub, and LaunchMate cloud.</p>
+                <pre><code># mcp_config.json
+{
+  "servers": [
+    {
+      "name": "granola",
+      "command": "granola-mcp-server",
+      "args": ["--api-key", "${GRANOLA_API_KEY}"]
+    },
+    {
+      "name": "github",
+      "command": "github-mcp-server",
+      "args": ["--token", "${GITHUB_TOKEN}"]
+    }
+  ]
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3>Connect Transcript Agent</h3>
+                <p>Configure your local Letta Code agent to communicate with the cloud Transcript Agent. This enables the transcript→drop workflow.</p>
+                <pre><code># In your Letta Code agent system prompt:
+"You are connected to LaunchMate's transcript pipeline.
+When you receive transcript analysis:
+1. Display summary to user
+2. Send structured data to Drop Agent (agent-82720585-edcc-4c31-b558-68fe3183b1e7)"
+</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Workflow Example</h2>
+        <p>Here's what happens when you finish a meeting:</p>
+        <ol>
+            <li><strong>Meeting ends</strong> → Granola records transcript</li>
+            <li><strong>Transcript Agent</strong> (local) analyzes via MCP</li>
+            <li><strong>Drop Agent</strong> (cloud) receives insights, creates scheduled drops</li>
+            <li><strong>Artifact stored</strong> in drops repo (GitHub)</li>
+            <li><strong>Notification</strong> sent to your agent when drop is ready</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h2>Key Integration Points</h2>
+        <ul>
+            <li><strong>Granola MCP:</strong> Pull meeting transcripts</li>
+            <li><strong>GitHub MCP:</strong> Store artifacts in drops repo</li>
+            <li><strong>Discord MCP:</strong> Optional notifications</li>
+            <li><strong>LaunchMate Cloud:</strong> Agent-to-agent communication</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <span class="tag">NEXT STEPS</span>
+        <h2>Your Action Items</h2>
+        <ol>
+            <li>Install Letta Code desktop app</li>
+            <li>Configure MCP servers (Granola, GitHub)</li>
+            <li>Test transcript import from one meeting</li>
+            <li>Verify drop creation in GitHub repo</li>
+        </ol>
+    </div>
+
+    <footer style="text-align: center; padding: 2rem; color: #666; font-size: 0.9rem;">
+        <p>Generated by Drop Agent · April 29, 2026</p>
+        <p>Part of the LaunchMate Context Engine</p>
+    </footer>
+</body>
+</html>
