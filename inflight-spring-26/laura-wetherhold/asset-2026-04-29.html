@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drops Naming Convention Guide</title>
+    <style>
+        body { font-family: Inter, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        h1 { color: #6366f1; border-bottom: 2px solid #6366f1; padding-bottom: 0.5rem; }
+        h2 { color: #f97316; margin-top: 2rem; }
+        code { background: #1e1e2e; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; color: #34d399; }
+        .path { background: #1e1e2e; padding: 1rem; border-radius: 8px; margin: 0.5rem 0; font-family: 'JetBrains Mono', monospace; border-left: 4px solid #6366f1; }
+        .example { background: #1e1e2e; padding: 1rem; border-radius: 8px; margin: 0.5rem 0; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th { background: #1e1e2e; padding: 0.5rem; text-align: left; border-bottom: 2px solid #6366f1; }
+        td { padding: 0.5rem; border-bottom: 1px solid #333; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; }
+    </style>
+</head>
+<body>
+    <h1>📥 LaunchMate Drops Naming Convention</h1>
+    <p class="label">Asset Type: Documentation • Generated: April 29, 2026</p>
+
+    <p>Drops are artifacts generated from transcript analysis and scheduled for delivery. This guide defines the folder structure and naming conventions for the drops repository.</p>
+
+    <h2>Folder Structure</h2>
+    <div class="path">
+        drops/<br>
+        ├── {cohort}/                    <em># e.g., inflight-spring-26</em><br>
+        │   ├── {user}/                  <em># e.g., laura-wetherhold</em><br>
+        │   │   ├── {drop-type}-{date}.{ext}  <em># actual drop files</em><br>
+        ├── templates/                   <em># Reusable templates</em><br>
+        ├── staging/                     <em># Pre-delivery staging area</em><br>
+        └── archive/                     <em># Old drops (1+ years)</em>
+    </div>
+
+    <h2>Drop Types</h2>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td><code>briefing</code></td>
+            <td>Meeting summary with key insights and commitments</td>
+            <td>briefing-2026-04-29.html</td>
+        </tr>
+        <tr>
+            <td><code>reminder</code></td>
+            <td>Follow-up on explicit commitments</td>
+            <td>reminder-2026-04-30.txt</td>
+        </tr>
+        <tr>
+            <td><code>asset</code></td>
+            <td>Generated guides, templates, or documentation</td>
+            <td>asset-2026-04-29.html</td>
+        </tr>
+        <tr>
+            <td><code>research</code></td>
+            <td>Compiled research or contact lists</td>
+            <td>research-2026-04-29.json</td>
+        </tr>
+        <tr>
+            <td><code>drop</code></td>
+            <td>Generic artifact (use specific types when possible)</td>
+            <td>drop-2026-04-29.md</td>
+        </tr>
+    </table>
+
+    <h2>File Extensions</h2>
+    <table>
+        <tr>
+            <th>Extension</th>
+            <th>Use Case</th>
+        </tr>
+        <tr>
+            <td><code>.html</code></td>
+            <td>Rich formatted content (briefings, assets, guides)</td>
+        </tr>
+        <tr>
+            <td><code>.md</code></td>
+            <td>Simple text, notes, documentation</td>
+        </tr>
+        <tr>
+            <td><code>.txt</code></td>
+            <td>Plain text reminders, simple messages</td>
+        </tr>
+        <tr>
+            <td><code>.json</code></td>
+            <td>Structured data (research, contacts, configurations)</td>
+        </tr>
+        <tr>
+            <td><code>.pdf</code></td>
+            <td>Formal documents, reports</td>
+        </tr>
+    </table>
+
+    <h2>Examples</h2>
+
+    <div class="example">
+        <strong>Meeting Briefing for Laura</strong><br>
+        <code>inflight-spring-26/laura-wetherhold/briefing-2026-04-29.html</code><br>
+        <em>Rich HTML summary of strategic planning meeting with Craig and Michael</em>
+    </div>
+
+    <div class="example">
+        <strong>Reminder for Craig</strong><br>
+        <code>inflight-spring-26/craig-lauer/reminder-2026-04-30.txt</code><br>
+        <em>Plain text reminder about reaching out to interns</em>
+    </div>
+
+    <div class="example">
+        <strong>Research Asset</strong><br>
+        <code>inflight-spring-26/laura-wetherhold/research-2026-04-29.json</code><br>
+        <em>JSON data of 10 boat marinas in San Diego with contact info</em>
+    </div>
+
+    <h2>Staging Area</h2>
+    <p>Before drops are finalized and moved to their final location, they can be staged in:</p>
+    <div class="path">
+        staging/{drop-id}/<br>
+        ├── metadata.json       <em># Drop metadata (type, recipients, schedule)</em><br>
+        ├── content.html        <em># Actual drop content</em><br>
+        └── status.txt          <em># pending | ready | delivered</em>
+    </div>
+
+    <h2>Archive Policy</h2>
+    <p>Drops older than 1 year are automatically moved to:</p>
+    <div class="path">
+        archive/{year}/{cohort}/{user}/
+    </div>
+
+    <h2>Integration Points</h2>
+    <ul>
+        <li><strong>Transcript Agent</strong> → sends analysis to Drop Agent</li>
+        <li><strong>Drop Agent</strong> → creates drop metadata + schedules delivery</li>
+        <li><strong>GitHub API</strong> → stores artifacts in drops repo</li>
+        <li><strong>Founder Agents</strong> → receive notification of drop delivery</li>
+    </ul>
+
+    <div style="margin-top: 3rem; padding-top: 1rem; border-top: 2px solid #333; text-align: center; color: #666; font-size: 0.9rem;">
+        <p>LaunchMate Drops Architecture</p>
+        <p class="label">Generated April 29, 2026</p>
+    </div>
+</body>
+</html>
