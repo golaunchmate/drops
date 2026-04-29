@@ -1,71 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meeting Briefing - April 29, 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; padding: 2rem; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .header { border-bottom: 1px solid #333; padding-bottom: 1.5rem; margin-bottom: 2rem; }
-        .header h1 { font-size: 1.8rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
-        .meta { color: #888; font-size: 0.9rem; }
-        .section { margin-bottom: 2rem; }
-        .section h2 { font-size: 1.2rem; font-weight: 600; color: #60a5fa; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        .commitment { background: #1a1a1a; border-left: 3px solid #34d399; padding: 1rem; margin-bottom: 1rem; border-radius: 0 8px 8px 0; }
-        .commitment.due-soon { border-left-color: #f97316; }
-        .commitment-meta { color: #888; font-size: 0.85rem; margin-top: 0.5rem; }
-        .drop-created { background: #1a1a1a; border: 1px solid #333; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
-        .drop-created h3 { color: #f97316; font-size: 1rem; margin-bottom: 0.5rem; }
-        .tag { display: inline-block; background: #333; color: #fff; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; margin-right: 0.5rem; }
+        body { font-family: Inter, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; background: #0f0f0f; color: #e5e5e5; }
+        .header { border-bottom: 2px solid #6366f1; padding-bottom: 1rem; margin-bottom: 2rem; }
+        .section { margin: 1.5rem 0; }
+        .commitment { background: #1e1e2e; padding: 1rem; border-left: 4px solid #34d399; margin: 0.5rem 0; }
+        .drop { background: #1e1e2e; padding: 1rem; border-left: 4px solid #f97316; margin: 0.5rem 0; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Meeting Briefing: Strategic Vision Session</h1>
-            <div class="meta">
-                <span class="tag">Drop</span> April 29, 2026 · Generated from transcript #txn-2026-0429-001
-            </div>
-        </div>
+    <div class="header">
+        <h1>📝 Meeting Briefing</h1>
+        <p class="label">April 29, 2026 • Laura, Craig, Michael</p>
+        <p>Strategic planning session on context engine architecture and drops workflow</p>
+    </div>
 
-        <div class="section">
-            <h2>Key Takeaways</h2>
-            <p>LaunchMate is pivoting from "communication platform" to "context engine." The core insight: founders won't adopt another platform, so we must meet them where they already work (Notion, Claude, email, transcripts) and vacuum up context for mentor visibility.</p>
-        </div>
+    <div class="section">
+        <p class="label">Key Insights</p>
+        <ul>
+            <li>LaunchMate's biggest failure: trying to be another communication platform</li>
+            <li>North Star: Context engine, not engagement platform</li>
+            <li>"Drops" replace "pokes" - from notification to production</li>
+            <li>Two AI futures: Agent Manager vs Personal Agent</li>
+        </ul>
+    </div>
 
-        <div class="section">
-            <h2>Explicit Commitments</h2>
-            <div class="commitment">
-                <strong>Laura</strong> — Build transcript→drop pipeline using Letta Code
-                <div class="commitment-meta">Due: Next check-in · Drop scheduled</div>
-            </div>
-            <div class="commitment due-soon">
-                <strong>Craig</strong> — Interview intern candidates (Aditya, Peter, Jay)
-                <div class="commitment-meta">Due: This week · Action needed</div>
-            </div>
+    <div class="section">
+        <p class="label">Explicit Commitments</p>
+        <div class="commitment">
+            <strong>Laura:</strong> Build drops architecture using Letta Code
         </div>
+        <div class="commitment">
+            <strong>Laura:</strong> Create Drop Agent and drops repo structure
+        </div>
+        <div class="commitment">
+            <strong>Craig:</strong> Reach out to Peter and Aditya about intern roles
+        </div>
+    </div>
 
-        <div class="section">
-            <h2>Drops Created for You</h2>
-            <div class="drop-created">
-                <h3>📋 Architecture Diagram</h3>
-                <p>Visual workflow of the transcript→drop→artifact pipeline with all agent touchpoints.</p>
-                <div class="commitment-meta">Type: Asset · Status: Available in drops repo</div>
-            </div>
-            <div class="drop-created">
-                <h3>⏰ Reminder: Meeting Follow-up</h3>
-                <p>Scheduled drop for next Monday with next steps from this session.</p>
-                <div class="commitment-meta">Type: Reminder · Scheduled: May 6, 2026</div>
-            </div>
+    <div class="section">
+        <p class="label">Potential Drops Generated</p>
+        <div class="drop">
+            <strong>Architecture Guide:</strong> Step-by-step for building context engine with Letta
         </div>
+        <div class="drop">
+            <strong>Intern Onboarding:</strong> Self-directed project starter pack
+        </div>
+        <div class="drop">
+            <strong>Drop Naming Convention:</strong> Template for drops repo structure
+        </div>
+    </div>
 
-        <div class="section">
-            <h2>Next Steps</h2>
-            <p>1. Set up Drop Agent with system prompt<br>2. Create drops repo structure<br>3. Mock sample drops<br>4. Train Transcript Agent to send to Drop Agent<br>5. Test end-to-end flow with Letta Code</p>
-        </div>
+    <div class="section" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #333;">
+        <p class="label">Generated By</p>
+        <p>LaunchMate Transcript Agent → Drop Agent</p>
+        <p style="font-size: 0.8rem; color: #666;">Mock drop for testing • Not an actual transcript analysis</p>
     </div>
 </body>
 </html>
