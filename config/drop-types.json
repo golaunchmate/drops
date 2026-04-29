@@ -1,0 +1,62 @@
+{
+  "drop_types": [
+    {
+      "id": "briefing",
+      "name": "Meeting Briefing",
+      "description": "Structured summary of meeting with commitments, decisions, and action items",
+      "file_extension": ".html",
+      "template": "briefing-template.html",
+      "delivery_method": "immediate",
+      "notify_user": true
+    },
+    {
+      "id": "research",
+      "name": "Research Brief",
+      "description": "Actionable intelligence synthesized from discussions and external research",
+      "file_extension": ".md",
+      "template": "research-template.md",
+      "delivery_method": "scheduled",
+      "default_delay_hours": 48,
+      "notify_user": true
+    },
+    {
+      "id": "reminder",
+      "name": "Commitment Reminder",
+      "description": "Follow-up on explicit commitments made during meetings",
+      "file_extension": ".json",
+      "template": "reminder-template.json",
+      "delivery_method": "scheduled",
+      "scheduled_based_on": "commitment_due_date",
+      "notify_user": true
+    },
+    {
+      "id": "guide",
+      "name": "Step-by-Step Guide",
+      "description": "Tutorial or how-to guide generated from discussion topics",
+      "file_extension": ".html",
+      "template": "guide-template.html",
+      "delivery_method": "scheduled",
+      "default_delay_hours": 24,
+      "notify_user": true
+    },
+    {
+      "id": "asset",
+      "name": "Generated Asset",
+      "description": "File generated for the user (lists, contact sheets, code snippets, etc.)",
+      "file_extension": ".json",
+      "template": "asset-manifest.json",
+      "delivery_method": "immediate",
+      "notify_user": true
+    }
+  ],
+  "delivery_methods": {
+    "immediate": "Deliver as soon as generated",
+    "scheduled": "Deliver at specified time based on configuration",
+    "cron": "Deliver on recurring schedule"
+  },
+  "storage": {
+    "repo": "golaunchmate/drops",
+    "base_url": "https://golaunchmate.github.io/drops",
+    "naming_pattern": "{cohort}/{user}/{drop-type}-{date}.{ext}"
+  }
+}
