@@ -1,0 +1,45 @@
+{
+  "drop_type": "reminder",
+  "title": "Follow-up: Email 5 Customers",
+  "description": "You committed to reaching out to 5 potential customers for LaunchMate validation during your meeting with Craig on April 29.",
+  "source": {
+    "transcript_id": "txn-2026-04-29-001",
+    "meeting_date": "2026-04-29",
+    "participants": ["Craig", "Laura"],
+    "context": "Discussing validation strategy for context engine pivot"
+  },
+  "commitment": {
+    "original_statement": "I'll email 5 customers by next Tuesday to validate the context engine approach",
+    "due_date": "2026-05-06",
+    "priority": "high",
+    "status": "pending"
+  },
+  "drop_details": {
+    "id": "drop-reminder-2026-04-29-001",
+    "created_at": "2026-04-29T11:30:00Z",
+    "scheduled_for": "2026-05-03T09:00:00Z",
+    "delivered": false,
+    "artifact_url": null
+  },
+  "actions": [
+    {
+      "type": "mark_complete",
+      "label": "Mark as Complete",
+      "endpoint": "/api/drops/drop-reminder-2026-04-29-001/complete"
+    },
+    {
+      "type": "snooze",
+      "label": "Snooze 24h",
+      "endpoint": "/api/drops/drop-reminder-2026-04-29-001/snooze"
+    },
+    {
+      "type": "view_context",
+      "label": "View Meeting Context",
+      "endpoint": "/api/transcripts/txn-2026-04-29-001"
+    }
+  ],
+  "related_drops": [
+    "briefing-2026-04-29.html",
+    "research-customer-validation-2026-04-29.md"
+  ]
+}
