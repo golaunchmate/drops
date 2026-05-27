@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="drop-type" content="briefing">
+    <meta name="drop-recipient" content="Laura Wetherhold">
+    <meta name="drop-date" content="2026-05-27">
+    <meta name="drop-source" content="michael-hayes-oauth-connectors-2026-05-20">
+    <title>Briefing · OAuth Connectors Session · May 20, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .card {
+            max-width: 600px;
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 48px 40px;
+        }
+
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #f0f0f0;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: #9ca3af;
+            margin-bottom: 24px;
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .meta-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: #818cf8;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 6px;
+            padding: 4px 10px;
+        }
+
+        .decision-block {
+            background: rgba(52, 211, 153, 0.06);
+            border-left: 3px solid #34d399;
+            padding: 16px 20px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 12px;
+        }
+
+        .decision-block .num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: #34d399;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+        }
+
+        .decision-block p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        .commitment-item {
+            background: #1e1e2e;
+            border-left: 3px solid #6366f1;
+            padding: 14px 18px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 10px;
+        }
+
+        .commitment-item .who {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: #818cf8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+
+        .commitment-item p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        .commitment-item .due {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: #f97316;
+            margin-top: 4px;
+        }
+
+        .question-item {
+            background: rgba(249, 115, 22, 0.06);
+            border-left: 3px solid #f97316;
+            padding: 14px 18px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 10px;
+        }
+
+        .question-item p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        .strategy-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .strategy-item:last-child {
+            border-bottom: none;
+        }
+
+        .strategy-item p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        .strategy-item .arrow {
+            color: #60a5fa;
+            margin-right: 8px;
+        }
+
+        .footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .footer p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            color: #4b5563;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .page-num {
+            position: absolute;
+            bottom: 24px;
+            right: 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: #4b5563;
+        }
+
+        .highlight { color: #60a5fa; }
+        .decision-text { color: #34d399; }
+        .tension { color: #f97316; }
+
+        /* Keyboard nav */
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: Cover -->
+    <div class="slide">
+        <div class="card" style="position: relative;">
+            <p class="label">Briefing · OAuth Connectors</p>
+            <h1>OAuth Connectors Session</h1>
+            <p class="subtitle">Key decisions, commitments, and open questions from the integration architecture discussion on May 20, 2026.</p>
+            <div class="meta-row">
+                <span class="meta-tag">transcript</span>
+                <span class="meta-tag">michael-hayes</span>
+                <span class="meta-tag">2026-05-20</span>
+            </div>
+            <p style="margin-top: 16px; font-size: 0.8rem; color: #6b7280;">↓ scroll</p>
+            <span class="page-num">1/4</span>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: Key Decisions -->
+    <div class="slide">
+        <div class="card" style="position: relative;">
+            <p class="label">Key Decisions</p>
+            <h2>Three architectural calls made</h2>
+
+            <div class="decision-block">
+                <p class="num">Decision 1</p>
+                <p>Built <span class="decision-text">direct connector bypassing Poke</span> for data flow — reduces Poke dependency and keeps it as notifier only.</p>
+            </div>
+
+            <div class="decision-block">
+                <p class="num">Decision 2</p>
+                <p>Store <span class="decision-text">encrypted tokens in Supabase with AES-256</span> — security layer against database exposure.</p>
+            </div>
+
+            <div class="decision-block">
+                <p class="num">Decision 3</p>
+                <p>Keep integrations at <span class="decision-text">web app level, not in agents</span> — safety + simplicity over agent-level complexity.</p>
+            </div>
+
+            <span class="page-num">2/4</span>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: Commitments + Open Questions -->
+    <div class="slide">
+        <div class="card" style="position: relative;">
+            <p class="label">Commitments & Open Questions</p>
+            <h2>What's locked in, what's still open</h2>
+
+            <div class="commitment-item">
+                <p class="who">Intern Developer</p>
+                <p>Create email for Google Console access</p>
+                <p class="due">Due: May 23, 2026</p>
+            </div>
+
+            <div class="commitment-item">
+                <p class="who">Both</p>
+                <p>Continue connector discussion</p>
+                <p class="due">Due: May 23, 2026</p>
+            </div>
+
+            <div class="commitment-item">
+                <p class="who">Both</p>
+                <p>Finish PR work</p>
+                <p class="due">Due: May 23, 2026</p>
+            </div>
+
+            <div style="margin-top: 24px;">
+                <p class="label" style="margin-bottom: 12px;">Open Questions</p>
+                <div class="question-item">
+                    <p>How to do OAuth programmatically through Letta safely?</p>
+                </div>
+                <div class="question-item">
+                    <p>Should we migrate to Amazon KMS?</p>
+                </div>
+                <div class="question-item">
+                    <p>Tool bloat concerns for agents?</p>
+                </div>
+            </div>
+
+            <span class="page-num">3/4</span>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: Strategic Notes -->
+    <div class="slide">
+        <div class="card" style="position: relative;">
+            <p class="label">Strategic Notes</p>
+            <h2>Architecture direction</h2>
+
+            <div class="strategy-item">
+                <p><span class="arrow">→</span> Keep Poke as <span class="highlight">notifier only</span>, not data manager — clean separation of concerns</p>
+            </div>
+            <div class="strategy-item">
+                <p><span class="arrow">→</span> Maintain <span class="highlight">modular integration architecture</span> — each connector independent and replaceable</p>
+            </div>
+            <div class="strategy-item">
+                <p><span class="arrow">→</span> Amazon KMS migration worth exploring for <span class="highlight">key management scaling</span> — future-proofing encryption</p>
+            </div>
+
+            <div class="footer">
+                <p>LaunchMate Transcript Agent → Drop Agent → Founder Agent</p>
+                <p style="margin-top: 4px;">drop-laura-test-briefing-20260527 · delivered 2026-05-27</p>
+            </div>
+
+            <span class="page-num">4/4</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
