@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="drop-type" content="briefing">
+    <meta name="drop-recipient" content="Laura Wetherhold">
+    <meta name="drop-date" content="2026-05-27">
+    <meta name="drop-source" content="michael-hayes-oauth-connectors-2026-05-20">
+    <title>OAuth Connectors · Session Notes · May 20</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 32px 80px;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        .header-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #7c3aed;
+            background: #f3f0ff;
+            border: 1px solid #ddd6fe;
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+
+        .header .sub {
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+
+        .header .meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: #9ca3af;
+            margin-top: 12px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        /* Decision cards */
+        .decision {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            transition: box-shadow 0.2s;
+        }
+
+        .decision:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .decision-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: white;
+            background: #7c3aed;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .decision-body {
+            flex: 1;
+        }
+
+        .decision-body strong {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .decision-body .why {
+            font-size: 0.82rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        /* Commitments table */
+        .comm-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comm-table th {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            text-align: left;
+            padding: 8px 12px;
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        .comm-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 0.88rem;
+        }
+
+        .comm-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comm-table .who {
+            font-weight: 600;
+            color: #7c3aed;
+        }
+
+        .comm-table .due {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: #f59e0b;
+            background: #fffbeb;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #fde68a;
+        }
+
+        /* Questions */
+        .question {
+            padding: 14px 0;
+            border-bottom: 1px dashed #e5e7eb;
+            font-size: 0.9rem;
+            color: #374151;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .question:last-child {
+            border-bottom: none;
+        }
+
+        .q-mark {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #f59e0b;
+            flex-shrink: 0;
+        }
+
+        /* Strategy */
+        .strat-item {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 0.88rem;
+        }
+
+        .strat-item:last-child {
+            border-bottom: none;
+        }
+
+        .strat-arrow {
+            color: #7c3aed;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .strat-item .highlight {
+            font-weight: 600;
+            color: #7c3aed;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem;
+            color: #d1d5db;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .page { padding: 32px 20px 60px; }
+            .header h1 { font-size: 1.5rem; }
+            .decision { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- Header -->
+        <div class="header">
+            <span class="header-tag">Briefing</span>
+            <h1>OAuth Connectors Session</h1>
+            <p class="sub">Integration architecture decisions from the May 20 discussion</p>
+            <p class="meta">source: michael-hayes-oauth-connectors-2026-05-20 · delivered 2026-05-27</p>
+        </div>
+
+        <!-- Key Decisions -->
+        <div class="section">
+            <p class="section-label">Key Decisions</p>
+
+            <div class="decision">
+                <div class="decision-num">1</div>
+                <div class="decision-body">
+                    <strong>Direct connector bypassing Poke</strong> for data flow
+                    <p class="why">Reduces Poke dependency — keeps it as notifier only, not data manager</p>
+                </div>
+            </div>
+
+            <div class="decision">
+                <div class="decision-num">2</div>
+                <div class="decision-body">
+                    <strong>Encrypted tokens in Supabase with AES-256</strong>
+                    <p class="why">Security layer against database exposure — tokens protected even if DB compromised</p>
+                </div>
+            </div>
+
+            <div class="decision">
+                <div class="decision-num">3</div>
+                <div class="decision-body">
+                    <strong>Integrations at web app level, not in agents</strong>
+                    <p class="why">Safety + simplicity — avoids agent-level complexity and tool bloat</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Commitments -->
+        <div class="section">
+            <p class="section-label">Commitments</p>
+            <table class="comm-table">
+                <thead>
+                    <tr>
+                        <th>Who</th>
+                        <th>What</th>
+                        <th>Due</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="who">Intern Dev</td>
+                        <td>Create email for Google Console access</td>
+                        <td><span class="due">May 23</span></td>
+                    </tr>
+                    <tr>
+                        <td class="who">Both</td>
+                        <td>Continue connector discussion</td>
+                        <td><span class="due">May 23</span></td>
+                    </tr>
+                    <tr>
+                        <td class="who">Both</td>
+                        <td>Finish PR work</td>
+                        <td><span class="due">May 23</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Open Questions -->
+        <div class="section">
+            <p class="section-label">Open Questions</p>
+
+            <div class="question">
+                <span class="q-mark">Q</span>
+                How to do OAuth programmatically through Letta safely?
+            </div>
+            <div class="question">
+                <span class="q-mark">Q</span>
+                Should we migrate to Amazon KMS?
+            </div>
+            <div class="question">
+                <span class="q-mark">Q</span>
+                Tool bloat concerns for agents?
+            </div>
+        </div>
+
+        <!-- Strategic Notes -->
+        <div class="section">
+            <p class="section-label">Strategic Direction</p>
+
+            <div class="strat-item">
+                <span class="strat-arrow">→</span>
+                <span>Keep Poke as <span class="highlight">notifier only</span> — clean separation of concerns</span>
+            </div>
+            <div class="strat-item">
+                <span class="strat-arrow">→</span>
+                <span>Maintain <span class="highlight">modular integration architecture</span> — each connector independent and replaceable</span>
+            </div>
+            <div class="strat-item">
+                <span class="strat-arrow">→</span>
+                <span>Amazon KMS migration worth exploring for <span class="highlight">key management scaling</span></span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span>LaunchMate · Drop Agent → Founder Agent</span>
+            <span>drop-laura-test-briefing-20260527</span>
+        </div>
+
+    </div>
+</body>
+</html>
