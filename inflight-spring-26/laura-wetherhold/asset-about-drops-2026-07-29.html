@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="drop-type" content="asset">
+    <meta name="drop-recipient" content="Laura Wetherhold">
+    <meta name="drop-date" content="2026-07-29">
+    <title>Drops: A Drop About Drops</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: #f5f5f5; color: #1a1a1a; overflow-x: hidden; }
+        .hero { background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%); padding: 80px 24px 60px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: '\\F4\E7'; position: absolute; font-size: 8rem; opacity: 0.08; top: 20px; left: 50%; transform: translateX(-50%); }
+        .hero h1 { font-size: 3rem; font-weight: 900; letter-spacing: -0.03em; color: white; text-shadow: 0 2px 20px rgba(0,0,0,0.15); margin-bottom: 8px; line-height: 1.1; }
+        .hero .tagline { font-size: 1.1rem; font-weight: 600; color: rgba(255,255,255,0.9); }
+        .hero .badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(255,255,255,0.25); color: white; padding: 4px 12px; border-radius: 100px; margin-bottom: 16px; backdrop-filter: blur(4px); }
+        .pipeline { max-width: 640px; margin: 48px auto; padding: 0 24px; }
+        .pipeline h2 { font-size: 1.4rem; font-weight: 800; text-align: center; margin-bottom: 32px; letter-spacing: -0.02em; }
+        .flow { display: flex; flex-direction: column; gap: 0; align-items: center; }
+        .flow-step { background: white; border-radius: 14px; padding: 16px 28px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 2px solid transparent; transition: transform 0.2s; max-width: 320px; width: 100%; }
+        .flow-step:hover { transform: translateY(-2px); }
+        .flow-step .icon { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+        .flow-step .name { font-weight: 700; font-size: 0.95rem; }
+        .flow-step .role { font-size: 0.75rem; color: #888; }
+        .flow-step.s1 { border-color: #ff6b6b; }
+        .flow-step.s2 { border-color: #feca57; }
+        .flow-step.s3 { border-color: #48dbfb; }
+        .flow-step.s4 { border-color: #1dd1a1; }
+        .flow-step.s5 { border-color: #a55eea; }
+        .flow-arrow { font-size: 1.5rem; color: #ccc; padding: 6px 0; line-height: 1; }
+        .types { max-width: 640px; margin: 0 auto 48px; padding: 0 24px; }
+        .types h2 { font-size: 1.4rem; font-weight: 800; text-align: center; margin-bottom: 24px; letter-spacing: -0.02em; }
+        .types-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .type-card { border-radius: 14px; padding: 24px 20px; color: white; position: relative; overflow: hidden; }
+        .type-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
+        .type-card p { font-size: 0.8rem; opacity: 0.92; line-height: 1.4; }
+        .tc-brief { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .tc-remind { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .tc-asset { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .tc-research { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .url-section { max-width: 640px; margin: 0 auto 48px; padding: 0 24px; }
+        .url-box { background: #1a1a2e; border-radius: 14px; padding: 24px; text-align: center; }
+        .url-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: #6b7280; margin-bottom: 12px; }
+        .url-pattern { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #4facfe; word-break: break-all; line-height: 1.6; }
+        .url-pattern .var { color: #feca57; }
+        .url-pattern .static { color: #a5b4fc; }
+        .naming { max-width: 640px; margin: 0 auto 48px; padding: 0 24px; }
+        .naming h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+        .naming-list { list-style: none; }
+        .naming-list li { background: white; border-radius: 10px; padding: 14px 18px; margin-bottom: 8px; font-size: 0.85rem; display: flex; align-items: flex-start; gap: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+        .naming-list .bullet { font-size: 1.1rem; flex-shrink: 0; }
+        .naming-list code { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; background: #f0f0f0; padding: 1px 6px; border-radius: 4px; color: #7c3aed; }
+        .footer { text-align: center; padding: 32px 24px 48px; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: #bbb; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 480px) { .hero h1 { font-size: 2.2rem; } .types-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <span class="badge">Drop - Asset - Meta</span>
+        <h1>A Drop About Drops</h1>
+        <p class="tagline">The LaunchMate drop system, explained by a drop</p>
+    </div>
+    <div class="pipeline">
+        <h2>How a drop flows</h2>
+        <div class="flow">
+            <div class="flow-step s1"><span class="icon">🎙️</span><span class="name">Transcript Agent</span><span class="role">Listens, extracts insights</span></div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step s2"><span class="icon">📮</span><span class="name">Drop Agent</span><span class="role">Dispatches to the right founder</span></div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step s3"><span class="icon">🤖</span><span class="name">Founder Agent</span><span class="role">Owns it - creates the asset</span></div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step s4"><span class="icon">🐙</span><span class="name">GitHub Pages</span><span class="role">Stores it, makes it live</span></div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step s5"><span class="icon">✨</span><span class="name">User</span><span class="role">Gets the drop. Done.</span></div>
+        </div>
+    </div>
+    <div class="types">
+        <h2>Four types of drops</h2>
+        <div class="types-grid">
+            <div class="type-card tc-brief"><h3>Briefings</h3><p>Session summaries - key decisions, commitments, open questions from transcripts.</p></div>
+            <div class="type-card tc-remind"><h3>Reminders</h3><p>Commitment nudges - "you said you would do X by Tuesday. It is Tuesday."</p></div>
+            <div class="type-card tc-asset"><h3>Assets</h3><p>Generated content - guides, one-pagers, visual resources, or this very page.</p></div>
+            <div class="type-card tc-research"><h3>Research</h3><p>Deep dives - market analysis, competitor intel, strategy explorations.</p></div>
+        </div>
+    </div>
+    <div class="url-section">
+        <div class="url-box">
+            <p class="label">URL Pattern</p>
+            <p class="url-pattern"><span class="static">https://golaunchmate.github.io/drops/</span><span class="var">{cohort}</span><span class="static">/</span><span class="var">{user}</span><span class="static">/</span><span class="var">{drop-type}</span><span class="static">-</span><span class="var">{date}</span><span class="static">.</span><span class="var">{ext}</span></p>
+        </div>
+    </div>
+    <div class="naming">
+        <h2>Naming conventions</h2>
+        <ul class="naming-list">
+            <li><span class="bullet">📁</span><span><strong>Cohort folders:</strong> <code>inflight-spring-26/</code>, <code>bootcamp-spring-26/</code>, <code>community/</code></span></li>
+            <li><span class="bullet">👤</span><span><strong>User folders:</strong> <code>laura-wetherhold/</code>, <code>michael-hayes/</code>, <code>craig-lauer/</code></span></li>
+            <li><span class="bullet">🏷️</span><span><strong>Drop-type prefixes:</strong> <code>briefing-</code>, <code>reminder-</code>, <code>asset-</code>, <code>research-</code></span></li>
+            <li><span class="bullet">📅</span><span><strong>Date suffix:</strong> <code>YYYY-MM-DD</code> - always the session date, not delivery date</span></li>
+            <li><span class="bullet">📄</span><span><strong>Extensions:</strong> <code>.html</code> for visual drops, <code>.md</code> for text, <code>.json</code> for structured data</span></li>
+        </ul>
+    </div>
+    <div class="footer">
+        <p>This is a drop about drops - made by a drop - delivered by a drop</p>
+        <p style="margin-top: 6px;">drop-laura-test-about-drops-20260729 - 2026-07-29</p>
+    </div>
+</body>
+</html>
